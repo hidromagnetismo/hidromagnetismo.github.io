@@ -1,12 +1,563 @@
+
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>cv</title>
+    <title>Liscano Natanael - Curriculum Vitae</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <style>
+        @font-face {
+            font-family: "Glyphicons Halflings";
+            src: url(font/bootstrap/glyphicons-halflings-regular.eot);
+            src:
+                url(font/bootstrap/glyphicons-halflings-regular.eot?#iefix) format("embedded-opentype"),
+                url(font/bootstrap/glyphicons-halflings-regular.woff2) format("woff2"),
+                url(font/bootstrap/glyphicons-halflings-regular.woff) format("woff"),
+                url(font/bootstrap/glyphicons-halflings-regular.ttf) format("truetype"),
+                url(font/bootstrap/glyphicons-halflings-regular.svg#glyphicons_halflingsregular) format("svg");
+        }
+
+        #cv {
+            margin-bottom: 200px;
+        }
+
+        .menu {
+            position: fixed;
+            background: #ffffffd6;
+            width: 100%;
+            height: 45px;
+            border-bottom: 1px #cccccc solid;
+            box-shadow: 0 0px 37px rgb(0 0 0 / 30%), 0 -2px 10px rgb(0 0 0 / 22%);
+        }
+
+        .menu div {
+            float: right;
+            margin: 5px;
+        }
+
+        .imgContainer {
+            float: left;
+            margin-top: 37px;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .imgContainerShow {
+            border-radius: 0%;
+            height: auto;
+        }
+
+        .imgContainer:hover {
+            filter: brightness(0.5);
+        }
+        .imgContainer img {
+            width: 100%;
+        }
+        .container {
+            width: 768px;
+        }
+        .containerResponsive {
+            padding: 20px;
+            width: 100%;
+            max-width: 768px;
+            height: auto;
+            margin: auto;
+        }
+
+
+        .header h1 {
+            margin-top: 90px;
+            margin-bottom: 0;
+            float: right;
+        }
+        .header h3 {
+            margin-top: 5px;
+            float: right;
+            clear: right;
+        }
+
+        .objective {
+            clear: both;
+            padding-top: 1px;
+        }
+
+        .objective h2 {
+            margin-bottom: 0px;
+        }
+
+        .objective p {
+            padding: 20px;
+        }
+
+        .itemAlign {
+            width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+    /* background: black; */
+    overflow: auto;
+    border-top: 1px solid #cecece;
+        }
+
+        .key {
+            width: 46%;
+    /* background: red; */
+    float: left;
+        }
+
+        .value {
+            width: 53%;
+    /* background: blue; */
+    float: right;
+        }
+
+        @media (max-width: 530px) {
+            .imgContainer {
+                margin: auto;
+                float: unset;
+            }
+            .header h1 {
+                margin-top: 40px;
+                float: left;
+            }
+            .header h3 {
+                float: left;
+                clear: left;
+            }
+            .key {
+                width: unset;
+            }
+            .value {
+                width: 90%;
+                clear: both;
+            }
+        }
+    </style>
+    <script src="js/vue.min.js"></script>
 </head>
 <body>
-    <p>Liscano Natanael</p>
+<div id="cv">
+
+    <div :style="`display:${printHidden=='unset'?'block':printHidden};`" class="menu">
+        <div
+            v-on:click="print"
+            :style="`display:${printHidden};`"
+            class="btn btn-primary"
+        >   <span class="glyphicon glyphicon-print" aria-hidden="true"></span>
+            Print
+        </div>
+        <div
+            v-on:click="responsive=!responsive"
+            :style="`display:${printHidden};`"
+            :class="`btn btn-${responsive?'primary':'default'}`"
+        >   <span class="glyphicon glyphicon-indent-right" aria-hidden="true"></span>
+            Responsive
+        </div>
+    </div>
+
+    <div :class="`header ${responsive?'containerResponsive':'container'}`">
+        <div v-on:click="imgShow=!imgShow" :class="`imgContainer ${imgShow?'imgContainerShow':''}`">
+            <img src="img/foto.jpg" alt="liscano natanael hidromagnetismo">
+        </div>
+    
+        <h1 id="nombre">Liscano Natanael</h1>
+        <h3>Curriculum Vitae</h3>
+        
+        <div class="objective">
+            
+            <h2>Objetivo</h2>
+
+            <p>
+                Servir con responsabilidad y profesionalismo aceptando las cláusulas que se me presenten y
+                responder con empeño y éxito ante cualquier situación. Soy una persona orientada hacia las metas
+                y objetivos de la organización, aplicando mis conocimientos para lograr así un trabajo coordinado
+                que permita el crecimiento de la empresa así como el mío en el ámbito personal y profesional.
+            </p>
+        
+        </div>
+
+    </div>
+
+    <div :class="`body ${responsive?'containerResponsive':'container'}`">
+
+        <div class="personal_information">
+
+            <h2>Datos Personales</h2>
+    
+            <div class="itemAlign">
+                <div class="key">Apellidos</div>
+                <div class="value">Liscano Martinez</div>
+            </div>
+            <div class="itemAlign">
+                <div class="key">Nombres</div>
+                <div class="value">Natanael Josué</div>
+            </div>
+            <div class="itemAlign">
+                <div class="key">Estado Civil</div>
+                <div class="value">Casado</div>
+            </div>
+            <div class="itemAlign">
+                <div class="key">Edad (Años)</div>
+                <div class="value">32</div>
+            </div>
+            <div class="itemAlign">
+                <div class="key">Dirección</div>
+                <div class="value">Urb. Santa Inés, Valencia, Estado Carabobo.</div>
+            </div>
+            <div class="itemAlign">
+                <div class="key">Licencia para conducir (Tipo)</div>
+                <div class="value">
+                    SEGUNDO 2
+                    <br>
+                    TERCER 3
+                </div>
+            </div>
+            <div class="itemAlign">
+                <div class="key">Teléfonos</div>
+                <div class="value">
+                    Digitel 1 +58 (412) 857.72.43
+                    <br>
+                    Digitel 2 +58 (412) 132.83.15
+                </div>
+            </div>
+            <div class="itemAlign">
+                <div class="key">Correo Electrónico</div>
+                <div class="value">hidromagnetismo@gmail.com</div>
+            </div>
+    
+        </div>
+    
+        <div class="education">
+    
+            <h2>Educación</h2>
+    
+            <div class="itemAlign">
+                <div class="key">Periodo</div>
+                <div class="value">1996 - 2002</div>
+            </div>
+            <div class="itemAlign">
+                <div class="key">Grado</div>
+                <div class="value">Primaria</div>
+            </div>
+            <div class="itemAlign">
+                <div class="key">Institución</div>
+                <div class="value">E.B. Jesús Granados Cáceres, Valencia, CARABOBO</div>
+            </div>
+    
+            <br>
+            
+            <div class="itemAlign">
+                <div class="key">Periodo</div>
+                <div class="value">2002 - 2006</div>
+            </div>
+            <div class="itemAlign">
+                <div class="key">Grado</div>
+                <div class="value">Secundaria, Bachiller en Ciencias</div>
+            </div>
+            <div class="itemAlign">
+                <div class="key">Institución</div>
+                <div class="value">U.E. Pio Tamayo, Tocuyito, CARABOBO</div>
+            </div>
+    
+        </div>
+    
+        <div class="work_experience">
+                
+            <h2>Experiencia Laboral</h2>
+            
+            <div class="itemAlign">
+                <div class="key">Periodo</div>
+                <div class="value">Abril 2010 - Octubre (7 meses)</div>
+            </div>
+            <div class="itemAlign">
+                <div class="key">Empleador</div>
+                <div class="value">Atento, Valencia, CARABOBO</div>
+            </div>
+            <div class="itemAlign">
+                <div class="key">Jefe</div>
+                <div class="value">La empresa cerró.</div>
+            </div>
+            <div class="itemAlign">
+                <div class="key">Cargo</div>
+                <div class="value">Teleoperador</div>
+            </div>
+            <div class="itemAlign">
+                <div class="key">Descripción</div>
+                <div class="value">Soporte Técnico CANTV (Internet ABA)</div>
+            </div>
+    
+            <br>
+            <br>
+    
+            <div class="itemAlign">
+                <div class="key">Periodo</div>
+                <div class="value">14/12/2011 – 2014 (2 años)</div>
+            </div>
+            <div class="itemAlign">
+                <div class="key">Empleador</div>
+                <div class="value">Universidad de Carabobo, FACYT, Departamento de Física, Laboratorios.</div>
+            </div>
+            <div class="itemAlign">
+                <div class="key">Jefe</div>
+                <div class="value">TSU Electrónica Luis Matos, Técnico de los Laboratorios de Física.</div>
+            </div>
+            <div class="itemAlign">
+                <div class="key">Teléfono</div>
+                <div class="value">+58 (426) - 543.95.75</div>
+            </div>
+            <div class="itemAlign">
+                <div class="key">Cargo</div>
+                <div class="value">Beca Servicio – Auxiliar de Laboratorio</div>
+            </div>
+            <div class="itemAlign">
+                <div class="key">Descripción</div>
+                <div class="value">
+                    Recibe, clasifica, ordena y prepara material de laboratorio para realizar las
+                    prácticas. Efectúa mantenimiento y reparaciones menores de los equipos de laboratorio,
+                    cumpliendo con las normas y procedimientos de seguridad integral
+                    establecidos por la organización.
+                </div>
+            </div>
+            
+            <br>
+            <br>
+    
+            <div class="itemAlign">
+                <div class="key">Periodo</div>
+                <div class="value">7/03/2016 – 10/2016 (3 meses)</div>
+            </div>
+            <div class="itemAlign">
+                <div class="key">Empleador</div>
+                <div class="value">JLG Química Valencia C.A.  [ <a target="_blank" href="http://jlgquimicavalencia.com/">http://jlgquimicavalencia.com/</a> ]</div>
+            </div>
+            <div class="itemAlign">
+                <div class="key">Jefe</div>
+                <div class="value">Lic. Computista Daniel Sánchez, Director de la Empresa</div>
+            </div>
+            <div class="itemAlign">
+                <div class="key">Teléfono</div>
+                <div class="value">+58 (414) - 437.30.51</div>
+            </div>
+            <div class="itemAlign">
+                <div class="key">Cargo</div>
+                <div class="value">Programador Web.</div>
+            </div>
+            <div class="itemAlign">
+                <div class="key">Descripción</div>
+                <div class="value">
+                    Corrección de bugs en el front-end y back-end de una aplicación web
+                    [ <a target="_blank" href="http://fraterland.com/">http://fraterland.com/</a> ] programada en CodeIgniter. Administración de
+                    servidor linux compartido [ <a target="_blank" href="http://godaddy.com/">http://godaddy.com/</a> ] mediante Shell Script
+                    [Bash] via acceso SSH.
+                </div>
+            </div>
+    
+            <br>
+            <br>
+    
+            <div class="itemAlign">
+                <div class="key">Periodo</div>
+                <div class="value">19/07/2015 – 14/12/2016 (1 año y 5 meses)</div>
+            </div>
+            <div class="itemAlign">
+                <div class="key">Empleador</div>
+                <div class="value">Editorial Aventura C.A. [ <a target="_blank" href="http://rutas4wd.com/">http://rutas4wd.com/</a> ]</div>
+            </div>
+            <div class="itemAlign">
+                <div class="key">Jefe</div>
+                <div class="value">Ing. Electricista Hugo Madriz, Director de la Editorial.</div>
+            </div>
+            <div class="itemAlign">
+                <div class="key">Teléfono</div>
+                <div class="value">+58 (414) - 437.83.32</div>
+            </div>
+            <div class="itemAlign">
+                <div class="key">Cargo</div>
+                <div class="value">Programador Web.</div>
+            </div>
+            <div class="itemAlign">
+                <div class="key">Descripción</div>
+                <div class="value">
+                    Publicación web [ <a target="_blank" href="https://rutas4wd.com">rutas4wd.com</a> ] mensual de la Revista RUTA'S.
+                    Resolver problemas de optimización y rendimiento de la aplicación web.
+                    Administrar y corregir problemas inherentes al funcionamiento del framework (CodeIgniter)
+                    utilizado en su diseño años atrás. Administración del servidor VPS 2G
+                    [ <a target="_blank" href="http://hostingssi.com/">http://hostingssi.com/</a> ] mediante Shell Script [Bash] via acceso SSH.
+                    Administración de servidor de respaldo linux.
+                </div>
+            </div>
+    
+        </div>
+    
+        <div class="courses_completed">
+    
+            <h2>Cursos Realizados</h2>
+    
+            <div class="itemAlign">
+                <div class="key">Curso</div>
+                <div class="value">Asistente Técnico</div>
+            </div>
+            <div class="itemAlign">
+                <div class="key">Duración</div>
+                <div class="value">234 Horas Académicas, Marzo 2007 – Junio 2008 (16 meses)</div>
+            </div>
+            <div class="itemAlign">
+                <div class="key">Institución</div>
+                <div class="value">Universidad José Antonio Páez, San Diego, CARABOBO</div>
+            </div>
+            <div class="itemAlign">
+                <div class="key">Descripción</div>
+                <div class="value">Asistente Técnico Mención: Ensamblaje, Reparación y Mantenimiento de computadoras.</div>
+            </div>
+    
+            <br>
+            <br>
+            
+            <div class="itemAlign">
+                <div class="key">Curso</div>
+                <div class="value">Electrónica Básica</div>
+            </div>
+            <div class="itemAlign">
+                <div class="key">Duración</div>
+                <div class="value">396 Horas, Mayo 2010 – Septiembre 2010 (5 meses)</div>
+            </div>
+            <div class="itemAlign">
+                <div class="key">Institución</div>
+                <div class="value">INCES la Isabelica, Valencia, CARABOBO</div>
+            </div>
+            <div class="itemAlign">
+                <div class="key">Descripción</div>
+                <div class="value">
+                    Circuitos Eléctricos en corriente contínua y alterna, Amplificador Operacional, Circuitos Amplificadores, Semiconductores.
+                </div>
+            </div>
+    
+            <br>
+            <br>
+            
+            <div class="itemAlign">
+                <div class="key">Curso</div>
+                <div class="value">Curso de Office</div>
+            </div>
+            <div class="itemAlign">
+                <div class="key">Duración</div>
+                <div class="value">Diciembre 2009 (1 semana)</div>
+            </div>
+            <div class="itemAlign">
+                <div class="key">Institución</div>
+                <div class="value">Secretaría de Producción, Turismo y Economía Popular del Estado Carabobo.</div>
+            </div>
+    
+        </div>
+    
+        <div class="abilities">
+    
+            <h2>Habilidades</h2>
+    
+            <div class="itemAlign">
+                <div class="key">Sistemas Operativos</div>
+                <div class="value">
+                    Linux (Shell)
+                    <br>
+                    Windows (CMD)
+                </div>
+            </div>
+            <br>
+            <div class="itemAlign">
+                <div class="key">Programación</div>
+                <div class="value">
+                    Shell Script [Bash] via SSH, Laravel,
+                    PHP, CSS, JavaScript (Vanilla, jQuery, VueJS,
+                    ThreeJS, BabylonJS), GoLang, MySQL, MongoDB
+                </div>
+            </div>
+            <br>
+            <div class="itemAlign">
+                <div class="key">Herramientas</div>
+                <div class="value">
+                    Multisim 10 (Electronic Workbench), MatLab 9, 
+                    AutoCAD 2014, 3ds Max 2014, SketchUp 2015,
+                    MS Office, Open Office.
+                </div>
+            </div>
+            <br>
+            <div class="itemAlign">
+                <div class="key">Habilidades</div>
+                <div class="value">
+                    Reparación de equipos electrónicos, Hardware y Software.
+                    <br>
+                    Diseño de Interfaces.
+                </div>
+            </div>
+    
+        </div>
+    
+
+        <div class="personal_references">
+    
+            <h2>Referencias Personales</h2>
+    
+            <div class="itemAlign">
+                <div class="key">T.S.U. Electrónica Luis Matos</div>
+                <div class="value">+58 (426) 543.94.75</div>
+            </div>
+            <div class="itemAlign">
+                <div class="key">Arquitecto Aracelis Castro</div>
+                <div class="value">+58 (414) 481.64.79</div>
+            </div>
+
+        </div>
+    
+    </div>
+
+
+</div>
+<script>
+
+    var cv = new Vue({
+        el: '#cv'
+        ,created() {
+            console.log('Liscano Natanael');
+        }
+        ,data: {
+            responsive: false
+            ,printHidden: 'unset'
+            ,imgShow: false
+        }
+        ,methods: {
+            print(){
+                this.imgShow = false;
+                this.printHidden = 'none';
+                var responsiveLast = this.responsive?true:false;
+                this.responsive == false;
+                this.$nextTick(function(){
+                    window.print();
+                    this.printHidden = 'unset';
+                    this.responsive == responsiveLast;
+                });
+            }
+        }
+    });
+
+    function responsive(){
+        if(window.innerWidth < 530){
+            cv._data.responsive = true;
+        }
+    }
+
+    window.addEventListener('resize', function(){
+        responsive();
+    });
+
+    window.onload = function(){
+        responsive();
+    }
+
+</script>
 </body>
 </html>
 
